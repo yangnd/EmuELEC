@@ -5,6 +5,8 @@
 name: EmuELEC-CI
 
 on:
+  watch:
+    types: started
   push:
     tags:
         -.*
