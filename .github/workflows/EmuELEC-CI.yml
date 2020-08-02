@@ -48,6 +48,10 @@ jobs:
         run: |
           PROJECT=Amlogic ARCH=arm DISTRO=EmuELEC make image
 
+      - name: Check space usage
+        if: (!cancelled())
+        run: df -hT
+
       - name: Upload firmware
         uses: actions/upload-artifact@master
         with:
