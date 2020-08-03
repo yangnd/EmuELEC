@@ -29,15 +29,14 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
-
+      - name: SSH connection to Actions
+        uses: P3TERX/debugger-action@main
+        if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+        
       - name: Checkout
         uses: actions/checkout@master
         with:
           ref: master
-    
-      - name: SSH connection to Actions
-        uses: P3TERX/debugger-action@main
-        if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
       
       - name: Prepare
         env:
