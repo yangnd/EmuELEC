@@ -16,6 +16,9 @@ on:
     # - cron: 0 20 * * *
   # release:
     # types: [published]
+      
+env:
+  SSH_ACTIONS: true
 
 jobs:
 
@@ -31,7 +34,11 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: master
-
+    
+      - name: SSH connection to Actions
+        uses: P3TERX/debugger-action@main
+        if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+      
       - name: Prepare
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -41,7 +48,7 @@ jobs:
             sudo -E apt update && sudo apt upgrade
             sudo -E apt-get -y install gcc make git unzip wget xz-utils libsdl2-dev libsdl2-mixer-dev libfreeimage-dev libfreetype6-dev libcurl4-openssl-dev rapidjson-dev libasound2-dev libgl1-mesa-dev build-essential libboost-all-dev cmake fonts-droid-fallback libvlc-dev libvlccore-dev vlc-bin texinfo premake4 golang patchutils gperf lzop xfonts-utils xsltproc libjson-perl 
             #bc lsdiff gperf lzop mkfontscale mkfontdir bdftopcf xsltproc perl
-            sudo -E apt-get -y autoremove --purge
+            #sudo -E apt-get -y autoremove --purge
             sudo -E apt-get clean
           
       - name: Compile firmware
