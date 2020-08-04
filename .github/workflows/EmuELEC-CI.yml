@@ -18,7 +18,7 @@ on:
     # types: [published]
       
 env:
-  SSH_ACTIONS: true
+  SSH_ACTIONS: false
 
 jobs:
 
@@ -43,10 +43,10 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
         run: |
             df -h
-            #docker rmi `docker images -q`
-            #sudo rm -rf /usr/share/dotnet /var/lib/mysql /etc/php /etc/apt/sources.list.d
-            #sudo -E apt-get -y --allow-remove-essential remove ansible* azure* aws* swift* podman* docker* skopeo* dotnet* erlang* firefox* google* gecko* chrome* cabal* ghc* haskell* hhvm* azul* adopt* ant* gradle* maven* kind* kubectl* helm* mono* mysql* php* psql* swig* mongodb* android*
-            #sudo -E apt-get -y --allow-remove-essential autoremove --purge            
+            docker rmi `docker images -q`
+            sudo rm -rf /usr/share/dotnet /var/lib/mysql /etc/php /etc/apt/sources.list.d
+            sudo -E apt-get -y remove ansible* aws* azure* swift* podman* docker* skopeo* dotnet* erlang* firefox* google* gecko* chrome* cabal* ghc* haskell* hhvm* azul* adopt* ant* gradle* maven* kind* kubectl* mono* mysql* php* psql* mongodb* swig* android*
+            sudo -E apt-get -y autoremove --purge            
             sudo -E apt update && sudo apt upgrade
             sudo -E apt-get -y install gcc make git unzip wget xz-utils libsdl2-dev libsdl2-mixer-dev libfreeimage-dev libfreetype6-dev libcurl4-openssl-dev rapidjson-dev libasound2-dev libgl1-mesa-dev build-essential libboost-all-dev cmake fonts-droid-fallback libvlc-dev libvlccore-dev vlc-bin texinfo premake4 golang bc patchutils gperf lzop xfonts-utils xsltproc libjson-perl 
             #bc lsdiff gperf lzop mkfontscale mkfontdir bdftopcf xsltproc perl
