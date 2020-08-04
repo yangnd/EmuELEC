@@ -42,7 +42,7 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-            df-h
+            df -h
             docker rmi `docker images -q`
             sudo -E apt-get -y remove ansible* azcopy* azure* alibaba* aws* swift* podman* docker* skopeo* notnet* erlang* firefox* google* gecko* chrome* cabal* ghc* haskell* keroku* hhvm* azul* adopt* ant* gradle* maven* kind* kubectl* helm* mono* mysql* php* psql* swig* mongodb* android*
             sudo rm -rf /usr/share/dotnet /var/lib/mysql /etc/php /etc/apt/sources.list.d
