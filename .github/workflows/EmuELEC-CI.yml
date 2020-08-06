@@ -59,7 +59,7 @@ jobs:
            
       - name: Compile firmware
         run: |
-          PROJECT=Amlogic-ng ARCH=arm DISTRO=EmuELEC make -j4 image
+          PROJECT=Amlogic-ng ARCH=arm DISTRO=EmuELEC make -j8 image
 
       - name: Check space usage
         if: (!cancelled())
