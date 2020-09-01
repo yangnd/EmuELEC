@@ -18,7 +18,7 @@ on:
     # types: [published]
       
 env:
-  SSH_ACTIONS: true
+  SSH_ACTIONS: false
 
 jobs:
 
@@ -59,7 +59,9 @@ jobs:
            
       - name: Compile firmware
         run: |
-          PROJECT=Amlogic-ng ARCH=arm DISTRO=EmuELEC make -j8 image
+          #PROJECT=Amlogic-ng ARCH=arm DISTRO=EmuELEC make -j8 image
+          cd EmuELEC
+          ./emuelec-addon.sh
 
       - name: Check space usage
         if: (!cancelled())
