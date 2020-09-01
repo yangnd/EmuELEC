@@ -60,7 +60,7 @@ jobs:
       - name: Compile firmware
         run: |
           #PROJECT=Amlogic-ng ARCH=arm DISTRO=EmuELEC make -j8 image
-          cd EmuELEC
+          #cd EmuELEC
           ./emuelec-addon.sh
 
       - name: Check space usage
